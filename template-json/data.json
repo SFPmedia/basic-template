@@ -1,0 +1,25 @@
+{
+  "persons": {
+    "Name": "Bob",
+    "EmployeeID": 45,
+    "Experience": 23,
+    "Company": "TCS",
+    "Designation": "Developer"
+  },
+  "someoneElse": [
+    {
+      "Name": "Not Bob",
+      "EmployeeID": 445,
+      "Experience": 223,
+      "Company": "TCS - Again",
+      "Designation": "Developeree"
+    },
+    {
+      "Name": "Not Bob 2, electric boogaloo",
+      "EmployeeID": 4455,
+      "Experience": 2233,
+      "Company": "TCS - Again, again",
+      "Designation": "Developeree 2"
+    }
+  ]
+}

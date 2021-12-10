@@ -1,0 +1,151 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<body>
+  <input id="todo" type="text" placeholder="Type here" />
+  <button id="submit-todo">Submit</button>
+  <div id="container"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.1.2/redux.min.js"></script>
+  <script>
+    // An action or actiontype could look like this: "const ADD_TODO = 'ADD_TODO';". In this example, I believe they are instantiated in the reducer. But that does not appear to be common practice.
+
+    // Creating the reducer
+    // "combineReducers" takes an object of funtions. These functions run when the action is called and returns the new state.
+    const reducer = Redux.combineReducers({
+      todos: (state = [], action) => {
+        const newState = Object.assign([], state);
+        if (action.type == "add") {
+          newState.push(action.item);
+        }
+        if (action.type == "remove") {
+          newState.splice(action.index, 1);
+        }
+        return newState;
+      },
+    });
+
+    // Access to the store is through "getState()" and updating the store is via "dispatch()".
+    // One can also register listeneners via "subscribe(listener" and unregister listeners via function returned by "subscribe(listener)".
+    // Creating the store
+    const store = Redux.createStore(reducer);
+
+    // Rendering the new states
+    const render = () => {
+      document.getElementById("container");
+      container.innerHTML = "";
+      const state = store.getState();
+      // Loop through each element in the state and display each item
+      state.todos.forEach((todo, i) => {
+        const e = document.createElement("div");
+        e.innerHTML = todo;
+        container.appendChild(e);
+        e.onclick = () => {
+          // The action.type, which is called by the "dispatch()" function refers to the "remove" here.
+          store.dispatch({
+            type: "remove",
+            index: i,
+          });
+          render();
+        };
+      });
+    };
+
+    // Calling the "dispatch()" function to store the information given in the input field and then renders the new state.
+    // The action.type, which is called by the "dispatch()" function refers to the "add" here.
+    document.getElementById("submit-todo").onclick = () => {
+      store.dispatch({
+        type: "add",
+        item: document.getElementById("todo").value,
+      });
+      console.log("Test1");
+      store.subscribe((reducer) => {
+        console.log("Test2");
+      });
+      document.getElementById("todo").value = "";
+      render();
+    };
+
+    // Delete from here
+
+    const mapStateToTodoListProps = (state) => ({
+      todos: getVisibleTodos(state.todos, state.visibilityFilter),
+    });
+
+    const getVisibleTodos = (todos, filter) => {
+      switch (filter) {
+        case "SHOW_ALL":
+          return todos;
+        case "SHOW_COMPLETED":
+          return todos.filter((t) => t.completed);
+        case "SHOW_ACTIVE":
+          return todos.filter((t) => !t.completed);
+      }
+    };
+
+    const mapDispatchToTodoListProps = (dispatch) => ({
+      onTodoClick: (id) => {
+        dispatch(toggleTodo(id));
+      },
+    });
+
+    const TodoList = ({ todos, onTodoClick }) => (
+      <ul>
+        {todos.map((todo) => (
+          <Todo key={todo.id} {...todo} onClick={() => onTodoClick(todo.id)} />
+        ))}
+      </ul>
+    );
+
+    const VisibleTodoList = connect(
+      mapStateToTodoListProps,
+      mapDispatchToTodoListProps
+    )(TodoList);
+
+    let AddTodo = ({ dispatch }) => {
+      let input;
+      return (
+        <div>
+          <input
+            ref={(node) => {
+              input = node;
+            }}
+          />
+          <button
+            onClick={() => {
+              dispatch(addTodo(input.value));
+              input.value = "";
+            }}
+          >
+            Add todo
+          </button>
+        </div>
+      );
+    };
+
+    AddTodo = connect()(AddTodo);
+
+    const TodoApp = () => {
+      return (
+        <div>
+          <AddTodo />
+          <VisibleTodoList />
+          <Footer />
+        </div>
+      );
+    };
+
+    const { connect, Provider } = ReactRedux;
+
+    const store = createStore(todoApp);
+
+    ReactDOM.render(
+      <Provider store={store}>
+        <TodoApp />
+      </Provider>,
+      document.getElementById("root")
+    );
+  </script>
+</body>
