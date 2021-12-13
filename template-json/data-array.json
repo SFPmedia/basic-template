@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "Not Bob",
+    "Type": "This is a type",
+    "Price": 223
+  },
+  {
+    "Name": "Not Bob 2 - You know the rest",
+    "Type": "This is a type 2",
+    "Price": 224
+  },
+  {
+    "Name": "Not Bob 3 - The return of the king",
+    "Type": "This is a type 3",
+    "Price": 225
+  }
+]
