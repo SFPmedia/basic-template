@@ -1,5 +1,8 @@
 import axios from "axios";
 
+// Actions are objects that have data describing the occurring actions
+// They are received by the store
+
 export const fetchTodos = () => {
   return async (dispatch) => {
     const response = await axios.get("http://localhost:3000/todos");
