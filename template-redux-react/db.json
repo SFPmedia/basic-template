@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "label": "You can add todos",
+      "id": 68
+    },
+    {
+      "label": "And you can remove todos",
+      "id": 98
+    },
+    {
+      "label": "Remove todos by clicking on them",
+      "id": 75
+    },
+    {
+      "label": "I somehow broke the update function on delete",
+      "id": 3
+    },
+    {
+      "label": "So you need to update the page to view the changes",
+      "id": 83
+    }
+  ]
+}
