@@ -10,8 +10,11 @@ export class App extends Component {
     this.handleFetchData = this.handleFetchData.bind(this);
   }
 
+  // The "handleFetchData()" is made to simulate a user input
+  // Currently it refers to the posts with the postID equal to the parameter given in "fetchData()"
+
   handleFetchData() {
-    this.props.fetchData(2);
+    this.props.fetchData(4);
   }
 
   render() {

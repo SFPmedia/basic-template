@@ -6,6 +6,8 @@ const initialState = {
   error: {},
 };
 
+// Depending on the action.type called, the "initialState" will be modified with the data from the "state"
+
 const fetchDataReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.SEND_REQUEST:
