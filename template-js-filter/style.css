@@ -1,0 +1,37 @@
+h1 {
+  text-align: center;
+  margin-top: 0.5em;
+}
+div {
+  text-align: center;
+  background: white;
+  border-bottom: 0.1em solid rgb(63, 63, 63);
+  border-top: 0.1em solid rgb(63, 63, 63);
+  font-size: 1.5em;
+  padding: 15px;
+  font-weight: 200px;
+}
+table {
+  margin: 1em auto 0 auto;
+  text-align: center;
+  width: 80%;
+  max-width: 800px;
+  border-collapse: collapse;
+}
+table > thead > tr {
+  background: rgb(6, 0, 85);
+  color: white;
+  padding: 20px;
+}
+table > tbody > tr {
+  border-bottom: 2px solid rgb(6, 0, 85);
+}
+table > tbody > tr > td,
+table > thead > tr > th {
+  padding: 1em;
+}
+select,
+input[type="number"] {
+  width: 8%;
+  height: 1.5em;
+}
