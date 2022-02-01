@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="./style.css" />
+    <title>To Do List</title>
+    <script src="./script.js" defer></script>
+  </head>
+
+  <body>
+    <div id="header">
+      <h1>Today's To-Do List</h1>
+      <button id="clear" onclick="clearToDoList()">Clear</button>
+      <div>
+        <input
+          type="radio"
+          id="addToDo"
+          name="mode"
+          value="add"
+          onclick="changeMode()"
+          checked
+        />
+        <label for="addToDo">Add To List</label>
+        <input
+          type="radio"
+          id="editTitle"
+          name="mode"
+          value="edit"
+          onclick="changeMode()"
+        />
+        <label for="editTitle">Change Titles</label>
+        <input
+          type="radio"
+          id="delete"
+          name="mode"
+          value="delete"
+          onclick="changeMode()"
+        />
+        <label for="delete">Delete To Do's</label>
+      </div>
+    </div>
+    <div id="add">
+      <input type="text" id="toDo" placeholder="Write your to do" />
+      <button id="btnAdd" onclick="addToDo()">Add</button>
+    </div>
+    <div id="edit">
+      <input type="text" id="cardTitle" placeholder="Write your card title" />
+      <button id="btnUpdate" onclick="change()">Change</button>
+    </div>
+    <section>
+      <div id="selectedCard1" class="card1">
+        <input
+          type="radio"
+          id="card1Selected"
+          name="cardSelected"
+          value="card1Selected"
+          checked
+          onclick="selectCard('card1')"
+        />
+        <h2 id="cardOneTitle">Must do</h2>
+      </div>
+      <div id="selectedCard2" class="card2">
+        <input
+          type="radio"
+          name="cardSelected"
+          id="card2Selected"
+          onclick="selectCard('card2')"
+        />
+        <h2 id="cardTwoTitle">Should do</h2>
+      </div>
+      <div id="selectedCard3" class="card3">
+        <input
+          type="radio"
+          name="cardSelected"
+          id="card3Selected"
+          onclick="selectCard('card3')"
+        />
+        <h2 id="cardThreeTitle">Would do</h2>
+      </div>
+    </section>
+  </body>
+</html>
