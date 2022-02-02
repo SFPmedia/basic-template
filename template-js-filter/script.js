@@ -48,6 +48,11 @@ var data = [
   },
 ];
 
+//import data from ("./data2.json");
+//import data from "./data2.json" assert { type: "json" };
+//import data from "./data2.json";
+//console.log(data);
+
 function onPageLoad() {
   let table = document.getElementById("studentData");
   let arrayLength = data.length;
